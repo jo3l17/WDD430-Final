@@ -1,0 +1,5 @@
+<form class="input-group mt-3" #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <input type="text" class="form-control" name="title" [ngModel]="todo?.title" #title="ngModel" placeholder="New Todo"
+    aria-label="Edit Todo" aria-describedby="button-addon2" required minlength="3">
+  <button class="btn btn-outline-primary" type="submit" id="button-addon2" [disabled]="!f.valid">Save Todo</button>
+</form>

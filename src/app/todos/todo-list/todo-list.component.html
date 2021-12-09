@@ -1,0 +1,6 @@
+<div class="list-group">
+  <h4 *ngIf="todos.length===0">No Todos</h4>
+  <label class="list-group-item" *ngFor="let todo of todos">
+    <todo-item [todo]="todo"></todo-item>
+  </label>
+</div>

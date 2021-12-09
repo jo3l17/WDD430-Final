@@ -1,0 +1,13 @@
+
+  <input class="form-check-input me-1"
+          type="checkbox"
+          [checked]="todo.completed"
+          (change)="complete($event)"
+          [disabled]="disabled">
+  {{todo.title}}
+  <button type="button" (click)="deleteTodo()" class="btn btn-dark ms-2 float-end">
+    <fa-icon [icon]="faMinusCircle"></fa-icon>
+  </button>
+  <button [routerLink]="[todo._id,'edit']" type="button" class="btn btn-dark ms-2 float-end">
+    <fa-icon [icon]="faEdit"></fa-icon>
+  </button>

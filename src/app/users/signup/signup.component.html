@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 col-md-8 m-auto">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" name="email" [ngModel]="user?.email" #email="ngModel" class="form-control" id="email"
+            aria-describedby="emailHelp" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+          <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+          <div *ngIf="!email.valid && email.touched" class="alert alert-danger">
+            Enter a valid Email address
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" [ngModel]="user?.password" name="password"
+            #password="ngModel" required minlength="8">
+          <div *ngIf="!password.valid && password.touched" class="alert alert-danger">
+            Enter a valid Password
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <input type="password" (ngModelChange)="passwordMatch=true" class="form-control" id="confirmPassword"
+            [(ngModel)]="confirmPassword" [ngModelOptions]="{standalone: true}">
+          <div *ngIf="!passwordMatch" class="alert alert-danger">
+            Passwords do not match
+          </div>
+        </div>
+        <div class="alert alert-danger" *ngIf="errorMessage">
+          {{errorMessage}}
+        </div>
+        <button type="submit" class="btn btn-primary">Sign up</button>
+      </form>
+    </div>
+  </div>
+</div>
