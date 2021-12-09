@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
 import { User } from "../user.model";
 import { UserService } from "../user.service";
 
@@ -15,9 +16,16 @@ export class SignupComponent implements OnInit {
   passwordMatch = true;
   errorMessage = "";
 
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly router: Router
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.userService.isLoggedIn()) {
+      this.router.navigate(["/todos"]);
+    }
+  }
 
   async onSubmit(form: NgForm) {
     const values = form.value;
@@ -28,11 +36,13 @@ export class SignupComponent implements OnInit {
     const user = { email: values.email, password: values.password } as User;
     try {
       await this.userService.signup(user);
+      this.router.navigate(["/todos"]);
+      return;
     } catch (e) {
       if (e instanceof HttpErrorResponse) {
-        console.log(e.error);
         this.errorMessage = e.error.message;
       }
+      return;
     }
   }
 }

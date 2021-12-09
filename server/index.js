@@ -38,7 +38,7 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
@@ -63,17 +63,13 @@ app.use("/api", routes);
 // });
 
 // establish a connection to the mongo database
-mongoose.connect(
-  MONGO_URI,
-  { useNewUrlParser: true },
-  (err, res) => {
-    if (err) {
-      console.log("Connection failed: " + err);
-    } else {
-      console.log("Connected to database!");
-    }
+mongoose.connect(MONGO_URI, { useNewUrlParser: true }, (err, res) => {
+  if (err) {
+    console.log("Connection failed: " + err);
+  } else {
+    console.log("Connected to database!");
   }
-);
+});
 
 // Define the port address and tell express to use this port
 const PORT = process.env.PORT || "3000";

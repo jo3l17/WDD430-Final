@@ -1,12 +1,11 @@
 const todoController = require("../controllers/todo");
-
-
+const tokenMiddleware = require("../middlewares/token.middleware");
 const router = require("express").Router();
 
-router.get("/", todoController.getAll);
-router.get("/:id", todoController.getOne);
-router.post("/", todoController.create);
-router.put("/:id", todoController.update);
-router.delete("/:id", todoController.delete);
+router.get("/", tokenMiddleware, todoController.getAll);
+router.get("/:id", tokenMiddleware, todoController.getOne);
+router.post("/", tokenMiddleware, todoController.create);
+router.put("/:id", tokenMiddleware, todoController.update);
+router.delete("/:id", tokenMiddleware, todoController.delete);
 
 module.exports = router;
