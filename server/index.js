@@ -49,7 +49,7 @@ app.use((req, res, next) => {
 
 // Tell express to use the specified director as the
 // root directory for your web site
-// app.use(express.static(path.join(__dirname, "dist/cms")));
+app.use(express.static(path.join(__dirname, "../dist/WDD430-Final")));
 
 // Tell express to map the default route ('/') to the index route
 // app.use("/", index);
@@ -58,9 +58,9 @@ app.use((req, res, next) => {
 app.use("/api", routes);
 
 // Tell express to map all other non-defined routes back to the index page
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "dist/cms/index.html"));
-// });
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../dist/WDD430-Final/index.html"));
+});
 
 // establish a connection to the mongo database
 mongoose.connect(MONGO_URI, { useNewUrlParser: true }, (err, res) => {
