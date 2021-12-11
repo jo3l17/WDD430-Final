@@ -16,7 +16,7 @@
           <input type="password" class="form-control" id="password" [ngModel]="user?.password" name="password"
             #password="ngModel" required minlength="8">
           <div *ngIf="!password.valid && password.touched" class="alert alert-danger">
-            Enter a valid Password
+            Enter a valid Password, at least 8 characters longs
           </div>
         </div>
         <div class="mb-3">
