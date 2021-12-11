@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SignupComponent } from './users/signup/signup.component';
 import { LoginComponent } from './users/login/login.component';
+import { ClickEditDirective } from './shared/editable-content.directive';
+import { DropdownDirective } from './shared/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { LoginComponent } from './users/login/login.component';
     AddTodoComponent,
     SignupComponent,
     LoginComponent,
+    ClickEditDirective,
+    DropdownDirective,
   ],
   imports: [
     BrowserModule,

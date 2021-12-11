@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
+import { Dropdown } from "bootstrap";
 
 @Component({
   selector: "app-header",

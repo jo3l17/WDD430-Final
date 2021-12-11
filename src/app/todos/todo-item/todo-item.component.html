@@ -1,13 +1,22 @@
-
-  <input class="form-check-input me-1"
+<!-- <input class="form-check-input me-1"
           type="checkbox"
           [checked]="todo.completed"
           (change)="complete($event)"
-          [disabled]="disabled">
-  {{todo.title}}
-  <button type="button" (click)="deleteTodo()" class="btn btn-dark ms-2 float-end">
-    <fa-icon [icon]="faMinusCircle"></fa-icon>
-  </button>
-  <button [routerLink]="[todo._id,'edit']" type="button" class="btn btn-dark ms-2 float-end">
-    <fa-icon [icon]="faEdit"></fa-icon>
-  </button>
+          [disabled]="disabled"> -->
+
+<div class="d-flex">
+  <div clickEdit [canEdit]="!disabled" (onContentChange)="onChange($event)" [ngClass]="{line: todo.completed}" class="flex-grow-1" >
+    {{todo.title}}
+  </div>
+  <div>
+    <!-- <button [routerLink]="[todo._id,'edit']" type="button" class="btn btn-dark ms-2">
+      <fa-icon [icon]="faEdit"></fa-icon>
+    </button> -->
+    <button [title]="doneTitle" type="button" class="btn btn-dark ms-2 " (click)="done()">
+      <fa-icon [icon]="!todo.completed?faCheck:faUndo"></fa-icon>
+    </button>
+    <button title="Delete Todo" data-bs-toggle="tooltip" data-bs-placement="top" type="button" (click)="deleteTodo()" class=" btn btn-dark ms-2">
+      <fa-icon [icon]="faTrash"></fa-icon>
+    </button>
+  </div>
+</div>
