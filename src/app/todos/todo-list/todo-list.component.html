@@ -1,6 +1,7 @@
 <div class="list-group">
   <h4 *ngIf="todos.length===0">No Todos</h4>
-  <div class="list-group-item" *ngFor="let todo of todos">
+  <div class="list-group-item mb-2" *ngFor="let todo of todos">
     <todo-item [todo]="todo"></todo-item>
   </div>
+  Tip: click on the todo to edit it
 </div>
