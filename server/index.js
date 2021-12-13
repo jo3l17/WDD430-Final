@@ -82,3 +82,7 @@ const server = http.createServer(app);
 server.listen(PORT, function () {
   console.log("API running on http://localhost:" + PORT);
 });
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../dist/WDD430-Final/index.html"));
+});
