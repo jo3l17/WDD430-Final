@@ -90,6 +90,7 @@ export class TodoService {
       if (updatedTodo) {
         const index = this.todos.findIndex((t) => t._id === todo._id);
         this.todos[index] = todo;
+        this.todos.sort((a, b) => (a.completed ? 1 : 0) - (b.completed ? 1 : 0));
         this.todosChanged.next(this.todos.slice());
       }
       return updatedTodo || null;

@@ -3,7 +3,9 @@ const Todo = require("../models/todo");
 const todoController = {
   getAll: async (req, res) => {
     try {
-      const todos = await Todo.find({ owner: req.user._id });
+      const todos = await Todo.find({ owner: req.user._id }).sort({
+        completed: 1,
+      });
       res.json(todos);
     } catch (error) {
       res.status(400).json({ message: error });
